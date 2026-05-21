@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import FluidBackground from "@/components/FluidBackground";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -118,8 +119,9 @@ function Index() {
   };
 
   return (
-    <div ref={root} className="min-h-screen bg-[var(--ink)] text-[var(--bone)] font-sans">
+    <div ref={root} className="min-h-screen text-[var(--bone)] font-sans relative">
       <Cursor />
+      <FluidBackground />
 
       {/* NAV */}
       <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-10 py-6 mix-blend-difference">
