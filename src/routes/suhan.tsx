@@ -92,45 +92,21 @@ function Cursor() {
 
 /* ───────────── data ───────────── */
 
-const DEFAULT_LINKS: { key: string; label: string; placeholder: string; url: string }[] = [
-  { key: "instagram", label: "Instagram", placeholder: "https://instagram.com/yourhandle", url: "" },
-  { key: "github", label: "GitHub", placeholder: "https://github.com/yourname", url: "" },
-  { key: "linkedin", label: "LinkedIn", placeholder: "https://linkedin.com/in/yourname", url: "" },
-  { key: "youtube", label: "YouTube", placeholder: "https://youtube.com/@yourchannel", url: "" },
-  { key: "chesscom", label: "Chess.com", placeholder: "https://chess.com/member/yourname", url: "" },
-  { key: "twitter", label: "Twitter / X", placeholder: "https://x.com/yourhandle", url: "" },
-  { key: "spotify", label: "Spotify", placeholder: "https://open.spotify.com/user/...", url: "" },
-  { key: "email", label: "Email", placeholder: "you@example.com", url: "" },
+const LINKS: { key: string; label: string; url: string }[] = [
+  { key: "instagram", label: "Instagram", url: "" },
+  { key: "github", label: "GitHub", url: "" },
+  { key: "linkedin", label: "LinkedIn", url: "" },
+  { key: "youtube", label: "YouTube", url: "" },
+  { key: "chesscom", label: "Chess.com", url: "" },
+  { key: "twitter", label: "Twitter / X", url: "" },
+  { key: "spotify", label: "Spotify", url: "" },
+  { key: "email", label: "Email", url: "" },
 ];
 
 /* ───────────── page ───────────── */
 
 function SuhanPage() {
   const root = useReveal<HTMLDivElement>();
-
-  const [links, setLinks] = useState(DEFAULT_LINKS);
-  const [editing, setEditing] = useState(false);
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("suhan.links");
-      if (raw) {
-        const saved = JSON.parse(raw) as Record<string, string>;
-        setLinks((prev) => prev.map((l) => ({ ...l, url: saved[l.key] ?? "" })));
-      }
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    const map: Record<string, string> = {};
-    links.forEach((l) => (map[l.key] = l.url));
-    try {
-      localStorage.setItem("suhan.links", JSON.stringify(map));
-    } catch {}
-  }, [links]);
-
-  const updateLink = (key: string, url: string) =>
-    setLinks((p) => p.map((l) => (l.key === key ? { ...l, url } : l)));
 
   const hrefFor = (l: { key: string; url: string }) => {
     if (!l.url) return undefined;
