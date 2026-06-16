@@ -92,45 +92,21 @@ function Cursor() {
 
 /* ───────────── data ───────────── */
 
-const DEFAULT_LINKS: { key: string; label: string; placeholder: string; url: string }[] = [
-  { key: "instagram", label: "Instagram", placeholder: "https://instagram.com/yourhandle", url: "" },
-  { key: "github", label: "GitHub", placeholder: "https://github.com/yourname", url: "" },
-  { key: "linkedin", label: "LinkedIn", placeholder: "https://linkedin.com/in/yourname", url: "" },
-  { key: "youtube", label: "YouTube", placeholder: "https://youtube.com/@yourchannel", url: "" },
-  { key: "chesscom", label: "Chess.com", placeholder: "https://chess.com/member/yourname", url: "" },
-  { key: "twitter", label: "Twitter / X", placeholder: "https://x.com/yourhandle", url: "" },
-  { key: "spotify", label: "Spotify", placeholder: "https://open.spotify.com/user/...", url: "" },
-  { key: "email", label: "Email", placeholder: "you@example.com", url: "" },
+const LINKS: { key: string; label: string; url: string }[] = [
+  { key: "instagram", label: "Instagram", url: "" },
+  { key: "github", label: "GitHub", url: "" },
+  { key: "linkedin", label: "LinkedIn", url: "" },
+  { key: "youtube", label: "YouTube", url: "" },
+  { key: "chesscom", label: "Chess.com", url: "" },
+  { key: "twitter", label: "Twitter / X", url: "" },
+  { key: "spotify", label: "Spotify", url: "" },
+  { key: "email", label: "Email", url: "" },
 ];
 
 /* ───────────── page ───────────── */
 
 function SuhanPage() {
   const root = useReveal<HTMLDivElement>();
-
-  const [links, setLinks] = useState(DEFAULT_LINKS);
-  const [editing, setEditing] = useState(false);
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("suhan.links");
-      if (raw) {
-        const saved = JSON.parse(raw) as Record<string, string>;
-        setLinks((prev) => prev.map((l) => ({ ...l, url: saved[l.key] ?? "" })));
-      }
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    const map: Record<string, string> = {};
-    links.forEach((l) => (map[l.key] = l.url));
-    try {
-      localStorage.setItem("suhan.links", JSON.stringify(map));
-    } catch {}
-  }, [links]);
-
-  const updateLink = (key: string, url: string) =>
-    setLinks((p) => p.map((l) => (l.key === key ? { ...l, url } : l)));
 
   const hrefFor = (l: { key: string; url: string }) => {
     if (!l.url) return undefined;
@@ -327,26 +303,16 @@ function SuhanPage() {
         </div>
       </section>
 
-      {/* LINKS (editable) */}
+      {/* LINKS */}
       <section id="links" className="px-6 md:px-10 py-28 md:py-40 border-b border-[var(--dim)]">
-        <div className="flex items-center justify-between mb-10">
-          <SectionLabel n="04" title="Channels" inline />
-          <button
-            onClick={() => setEditing((e) => !e)}
-            className="text-[10px] tracking-[0.25em] uppercase px-4 py-2 border border-[var(--dim)] rounded-full hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
-          >
-            {editing ? "Done" : "Edit links"}
-          </button>
-        </div>
-
-        <p className="font-serif italic text-3xl md:text-5xl leading-[1.05] tracking-[-0.03em] max-w-3xl mb-12 reveal">
-          Paste your URLs once. The grid lights up.
+        <SectionLabel n="04" title="Channels" />
+        <p className="font-serif italic text-3xl md:text-5xl leading-[1.05] tracking-[-0.03em] max-w-3xl mt-10 mb-12 reveal">
+          Where to find me across the web.
         </p>
 
         <div className="grid md:grid-cols-2 gap-px bg-[var(--dim)] border border-[var(--dim)]">
-          {links.map((l, i) => {
+          {LINKS.map((l, i) => {
             const href = hrefFor(l);
-            const filled = Boolean(l.url);
             return (
               <div
                 key={l.key}
@@ -357,17 +323,9 @@ function SuhanPage() {
                   <span className="text-[10px] tracking-[0.3em] uppercase opacity-50">
                     — {String(i + 1).padStart(2, "0")} / {l.label}
                   </span>
-                  <span className={`h-1.5 w-1.5 rounded-full ${filled ? "bg-[var(--accent)]" : "bg-[var(--dim)]"}`} />
                 </div>
 
-                {editing ? (
-                  <input
-                    value={l.url}
-                    onChange={(e) => updateLink(l.key, e.target.value)}
-                    placeholder={l.placeholder}
-                    className="w-full bg-transparent font-serif italic text-2xl md:text-4xl tracking-[-0.02em] outline-none placeholder:opacity-25 caret-[var(--accent)] py-2"
-                  />
-                ) : href ? (
+                {href ? (
                   <a
                     href={href}
                     target={l.key === "email" ? undefined : "_blank"}
@@ -380,21 +338,14 @@ function SuhanPage() {
                     <span className="hover-arrow text-2xl md:text-3xl opacity-60">↗</span>
                   </a>
                 ) : (
-                  <button
-                    onClick={() => setEditing(true)}
-                    className="font-serif italic text-2xl md:text-4xl tracking-[-0.02em] opacity-30 hover:opacity-60 transition text-left w-full"
-                  >
-                    Add {l.label.toLowerCase()} →
-                  </button>
+                  <span className="font-serif italic text-2xl md:text-4xl tracking-[-0.02em] opacity-25">
+                    Coming soon
+                  </span>
                 )}
               </div>
             );
           })}
         </div>
-
-        <p className="mt-6 text-[10px] tracking-[0.25em] uppercase opacity-40">
-          Stored locally on this device. Refresh-safe.
-        </p>
       </section>
 
       {/* CONTACT */}
