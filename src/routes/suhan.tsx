@@ -303,26 +303,16 @@ function SuhanPage() {
         </div>
       </section>
 
-      {/* LINKS (editable) */}
+      {/* LINKS */}
       <section id="links" className="px-6 md:px-10 py-28 md:py-40 border-b border-[var(--dim)]">
-        <div className="flex items-center justify-between mb-10">
-          <SectionLabel n="04" title="Channels" inline />
-          <button
-            onClick={() => setEditing((e) => !e)}
-            className="text-[10px] tracking-[0.25em] uppercase px-4 py-2 border border-[var(--dim)] rounded-full hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
-          >
-            {editing ? "Done" : "Edit links"}
-          </button>
-        </div>
-
-        <p className="font-serif italic text-3xl md:text-5xl leading-[1.05] tracking-[-0.03em] max-w-3xl mb-12 reveal">
-          Paste your URLs once. The grid lights up.
+        <SectionLabel n="04" title="Channels" />
+        <p className="font-serif italic text-3xl md:text-5xl leading-[1.05] tracking-[-0.03em] max-w-3xl mt-10 mb-12 reveal">
+          Where to find me across the web.
         </p>
 
         <div className="grid md:grid-cols-2 gap-px bg-[var(--dim)] border border-[var(--dim)]">
-          {links.map((l, i) => {
+          {LINKS.map((l, i) => {
             const href = hrefFor(l);
-            const filled = Boolean(l.url);
             return (
               <div
                 key={l.key}
@@ -333,17 +323,9 @@ function SuhanPage() {
                   <span className="text-[10px] tracking-[0.3em] uppercase opacity-50">
                     — {String(i + 1).padStart(2, "0")} / {l.label}
                   </span>
-                  <span className={`h-1.5 w-1.5 rounded-full ${filled ? "bg-[var(--accent)]" : "bg-[var(--dim)]"}`} />
                 </div>
 
-                {editing ? (
-                  <input
-                    value={l.url}
-                    onChange={(e) => updateLink(l.key, e.target.value)}
-                    placeholder={l.placeholder}
-                    className="w-full bg-transparent font-serif italic text-2xl md:text-4xl tracking-[-0.02em] outline-none placeholder:opacity-25 caret-[var(--accent)] py-2"
-                  />
-                ) : href ? (
+                {href ? (
                   <a
                     href={href}
                     target={l.key === "email" ? undefined : "_blank"}
@@ -356,21 +338,14 @@ function SuhanPage() {
                     <span className="hover-arrow text-2xl md:text-3xl opacity-60">↗</span>
                   </a>
                 ) : (
-                  <button
-                    onClick={() => setEditing(true)}
-                    className="font-serif italic text-2xl md:text-4xl tracking-[-0.02em] opacity-30 hover:opacity-60 transition text-left w-full"
-                  >
-                    Add {l.label.toLowerCase()} →
-                  </button>
+                  <span className="font-serif italic text-2xl md:text-4xl tracking-[-0.02em] opacity-25">
+                    Coming soon
+                  </span>
                 )}
               </div>
             );
           })}
         </div>
-
-        <p className="mt-6 text-[10px] tracking-[0.25em] uppercase opacity-40">
-          Stored locally on this device. Refresh-safe.
-        </p>
       </section>
 
       {/* CONTACT */}
