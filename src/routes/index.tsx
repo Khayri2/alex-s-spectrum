@@ -76,12 +76,9 @@ function Cursor() {
 /* ───────────── data ───────────── */
 
 const DEFAULT_LINKS: { key: string; label: string; placeholder: string; url: string }[] = [
-  { key: "instagram", label: "Instagram", placeholder: "https://instagram.com/yourhandle", url: "" },
+  { key: "github", label: "GitHub", placeholder: "https://github.com/yourname", url: "https://github.com/Khayri2" },
   { key: "linkedin", label: "LinkedIn", placeholder: "https://linkedin.com/in/yourname", url: "" },
-  { key: "twitter", label: "Twitter / X", placeholder: "https://x.com/yourhandle", url: "" },
-  { key: "youtube", label: "YouTube", placeholder: "https://youtube.com/@yourchannel", url: "" },
-  { key: "github", label: "GitHub", placeholder: "https://github.com/yourname", url: "" },
-  { key: "email", label: "Email", placeholder: "you@example.com", url: "" },
+  { key: "email", label: "Email", placeholder: "you@example.com", url: "suhanmpatiwala@gmail.com" },
 ];
 
 /* ───────────── page ───────────── */
@@ -95,7 +92,7 @@ function Index() {
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem("alex.links");
+      const raw = localStorage.getItem("suhan.links");
       if (raw) {
         const saved = JSON.parse(raw) as Record<string, string>;
         setLinks((prev) => prev.map((l) => ({ ...l, url: saved[l.key] ?? "" })));
@@ -106,7 +103,7 @@ function Index() {
   useEffect(() => {
     const map: Record<string, string> = {};
     links.forEach((l) => (map[l.key] = l.url));
-    try { localStorage.setItem("alex.links", JSON.stringify(map)); } catch {}
+    try { localStorage.setItem("suhan.links", JSON.stringify(map)); } catch {}
   }, [links]);
 
   const updateLink = (key: string, url: string) =>
@@ -127,7 +124,7 @@ function Index() {
       <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-10 py-6 mix-blend-difference">
         <a href="#top" className="flex items-center gap-3 text-[10px] tracking-[0.32em] uppercase">
           <span className="inline-block h-2 w-2 rounded-full bg-[var(--accent)] animate-pulse" />
-          Alex<span className="opacity-40">®</span>
+          Suhan<span className="opacity-40">®</span>
         </a>
         <ul className="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase">
           <li><a href="#about" className="opacity-60 hover:opacity-100 transition">About</a></li>
@@ -136,25 +133,25 @@ function Index() {
           <li><a href="#contact" className="opacity-60 hover:opacity-100 transition">Contact</a></li>
         </ul>
         <div className="text-[10px] tracking-[0.3em] uppercase opacity-60">
-          <span className="hidden sm:inline">2026 —</span> CA / EST
+          <span className="hidden sm:inline">2026 —</span> IN / IST
         </div>
       </nav>
 
       {/* HERO */}
       <section id="top" className="relative min-h-screen flex flex-col justify-end px-6 md:px-10 pb-10 pt-32">
         <div className="absolute top-1/3 right-6 md:right-10 max-w-[260px] text-[11px] leading-relaxed tracking-wide opacity-60 reveal hidden md:block">
-          <span className="text-[var(--accent)]">●</span> A portfolio for a 16-year-old who refuses to pick a lane — racing one weekend, debating human rights the next.
+          <span className="text-[var(--accent)]">●</span> A portfolio for a 13-year-old who refuses to pick a lane — racing one weekend, debating human rights the next.
         </div>
 
         <div className="grid grid-cols-12 gap-4 items-end">
           <div className="col-span-12 md:col-span-8">
             <div className="text-[10px] tracking-[0.4em] uppercase text-[var(--accent)] mb-6 reveal">
-              ⌁ Index / 001 — Alex, Canada
+              ⌁ Index / 001 — Suhan, India
             </div>
             <h1 className="font-serif italic leading-[0.85] tracking-[-0.04em] text-[clamp(4.5rem,17vw,16rem)]">
               <span className="mask-line"><span>The</span></span>
               <span className="mask-line"><span>un<span className="text-[var(--accent)]">/</span>seen</span></span>
-              <span className="mask-line"><span>sixteen.</span></span>
+              <span className="mask-line"><span>thirteen.</span></span>
             </h1>
           </div>
           <div className="col-span-12 md:col-span-4 md:pb-6">
