@@ -158,7 +158,7 @@ function Index() {
             <p className="text-sm leading-relaxed opacity-60 max-w-sm reveal">
               I race karts nationally. I debate human rights at the UN. I shoot photos.
               I build websites. I live and breathe Formula 1.
-              <span className="block mt-3 text-[var(--bone)]">I'm 16. And I'm just getting started.</span>
+              <span className="block mt-3 text-[var(--bone)]">I'm 13. And I'm just getting started.</span>
             </p>
           </div>
         </div>
@@ -191,7 +191,7 @@ function Index() {
         <div className="marquee-track flex w-max">
           {[0, 1].map((k) => (
             <div key={k} className="flex shrink-0">
-              {["Racing", "Diplomacy", "Photography", "Formula 1", "UN UNHRC", "Web Dev", "Canada"].map((w, i) => (
+              {["Racing", "Diplomacy", "Photography", "Formula 1", "UN UNHRC", "Web Dev", "India"].map((w, i) => (
                 <span key={`${k}-${i}`} className="font-serif italic text-3xl md:text-4xl px-8 opacity-30">
                   {w} <span className="text-[var(--accent)] opacity-100 not-italic mx-2">✦</span>
                 </span>
@@ -210,8 +210,8 @@ function Index() {
               Not your average teenager.
             </h2>
             <p className="text-base md:text-lg leading-[1.8] opacity-60 max-w-lg reveal">
-              I'm Alex — a 16-year-old from Canada who doesn't do things halfway.
-              On the track, I race go-karts at the national level, representing Canada at speed.
+              I'm Suhan — a 13-year-old from India who doesn't do things halfway.
+              On the track, I race go-karts at the national level, representing India at speed.
               Off it, I represent youth voices as a UN delegate for the UNHRC, arguing for human
               rights on a global stage. Photography is how I see the world. Code is how I shape it.
               And F1 is the language I dream in.
@@ -219,8 +219,8 @@ function Index() {
           </div>
           <div className="md:mt-12">
             {[
-              { n: "16", d: "Years Old" },
-              { n: "CA", d: "National Racer" },
+              { n: "13", d: "Years Old" },
+              { n: "IN", d: "National Racer" },
               { n: "UN", d: "UNHRC Delegate" },
               { n: "∞", d: "F1 Passion" },
             ].map((s, i) => (
@@ -383,7 +383,7 @@ function Index() {
 
       {/* FOOTER */}
       <footer className="px-6 md:px-10 py-6 border-t border-[var(--dim)] flex flex-wrap items-center justify-between gap-4 text-[10px] tracking-[0.3em] uppercase opacity-40">
-        <span>Alex — Canada</span>
+        <span>Suhan — India</span>
         <span className="hidden md:inline">Racer · Delegate · Creator</span>
         <span>© 2026 ✦ All systems green</span>
       </footer>
