@@ -76,8 +76,11 @@ function Cursor() {
 /* ───────────── data ───────────── */
 
 const DEFAULT_LINKS: { key: string; label: string; placeholder: string; url: string }[] = [
-  { key: "github", label: "GitHub", placeholder: "https://github.com/yourname", url: "https://github.com/Khayri2" },
+  { key: "instagram", label: "Instagram", placeholder: "https://instagram.com/yourhandle", url: "" },
   { key: "linkedin", label: "LinkedIn", placeholder: "https://linkedin.com/in/yourname", url: "" },
+  { key: "twitter", label: "Twitter / X", placeholder: "https://x.com/yourhandle", url: "" },
+  { key: "youtube", label: "YouTube", placeholder: "https://youtube.com/@yourchannel", url: "" },
+  { key: "github", label: "GitHub", placeholder: "https://github.com/yourname", url: "https://github.com/Khayri2" },
   { key: "email", label: "Email", placeholder: "you@example.com", url: "suhanmpatiwala@gmail.com" },
 ];
 
@@ -242,7 +245,7 @@ function Index() {
         <SectionLabel n="02" title="Disciplines" />
         <div className="grid md:grid-cols-2 gap-px bg-[var(--dim)] border border-[var(--dim)] mt-12">
           {[
-            { n: "01", t: "Go-Kart Racing", d: "Competing nationally for Canada. Every corner is a calculation, every race is controlled chaos. Speed is the only language I need.", tag: "National" },
+            { n: "01", t: "Go-Kart Racing", d: "Competing nationally for India. Every corner is a calculation, every race is controlled chaos. Speed is the only language I need.", tag: "National" },
             { n: "02", t: "UN Youth Delegate", d: "Representing the next generation at the UNHRC. I debate. I argue. I advocate. Human rights are non-negotiable.", tag: "UNHRC" },
             { n: "03", t: "Photography", d: "Slowing the world down through a lens. I find the extraordinary in the ordinary — one frame at a time.", tag: "Personal" },
             { n: "04", t: "Web Development", d: "Building digital experiences from the ground up. The internet is a canvas. Code is the brush.", tag: "Self-taught" },
