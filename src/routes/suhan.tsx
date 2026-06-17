@@ -6,11 +6,11 @@ export const Route = createFileRoute("/suhan")({
   component: SuhanPage,
   head: () => ({
     meta: [
-      { title: "Suhan — Thirteen. From India. Unfinished." },
+      { title: "Suhan — Creative Developer / Designer. Ahmedabad, India." },
       {
         name: "description",
         content:
-          "Portfolio of Suhan, a 13-year-old builder, thinker, and creator from India. Code, chess, cricket, music, and curiosity at full volume.",
+          "Portfolio of Suhan, a creative developer and designer from Ahmedabad, India. Interactive, high-performance web experiences with a focus on motion, structure, and clarity.",
       },
     ],
   }),
@@ -94,13 +94,13 @@ function Cursor() {
 
 const LINKS: { key: string; label: string; url: string }[] = [
   { key: "instagram", label: "Instagram", url: "" },
-  { key: "github", label: "GitHub", url: "" },
+  { key: "github", label: "GitHub", url: "https://github.com/Khayri2" },
   { key: "linkedin", label: "LinkedIn", url: "" },
   { key: "youtube", label: "YouTube", url: "" },
   { key: "chesscom", label: "Chess.com", url: "" },
   { key: "twitter", label: "Twitter / X", url: "" },
   { key: "spotify", label: "Spotify", url: "" },
-  { key: "email", label: "Email", url: "" },
+  { key: "email", label: "Email", url: "suhanmpatiwala@gmail.com" },
 ];
 
 /* ───────────── page ───────────── */
